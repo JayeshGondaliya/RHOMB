@@ -169,7 +169,7 @@ export default function Home() {
                         "photo-1605100804763-247f67b3557e", "photo-1599643478518-a784e5dc4c8f", "photo-1535632787350-4e68ef0ac584",
                         "photo-1611591437281-460bfbe1220a", "photo-1602173574767-37ac01994b2a", "photo-1515562141207-7a88fb7ce338",
                     ].map((s, i) => (
-                        <a key={i} href="#" className="group relative aspect-square overflow-hidden rounded-md">
+                        <a key={i} href="/contact" className="group relative aspect-square overflow-hidden rounded-md">
                             <img src={`https://images.unsplash.com/${s}?auto=format&fit=crop&w=400&q=80`} alt="" className="h-full w-full object-cover transition duration-700 group-hover:scale-110" />
                             <div className="absolute inset-0 bg-black/0 transition group-hover:bg-black/40" />
                         </a>

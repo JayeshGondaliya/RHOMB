@@ -33,7 +33,6 @@ function App() {
 
           <Route path="about" element={<About />} />
           <Route path="admin" element={<Admin />} />
-          {/* <Route path="buy-gold" element={<BuyGold />} /> */}
           <Route path="cart" element={<Cart />} />
           <Route path="checkout" element={<Checkout />} />
           <Route path="contact" element={<Contact />} />
@@ -41,7 +40,6 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="shop" element={<Shop />} />
           <Route path="shop" element={<Shop />} />
-          {/* <Route path="sell" element={<Sell />} /> */}
           <Route path="wishlist" element={<Wishlist />} />
           <Route path="product/:id" element={<Product />} />
 

@@ -41,7 +41,7 @@ export function Footer() {
                             (Icon, i) => (
                                 <a
                                     key={i}
-                                    href="/"
+                                    href="/contact"
                                     className="grid h-9 w-9 place-items-center rounded-full border border-gold/40 text-gold hover:gold-glow"
                                 >
                                     <Icon className="h-4 w-4" />

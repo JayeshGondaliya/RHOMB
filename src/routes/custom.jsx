@@ -5,15 +5,6 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const inputClassName = "w-full rounded-md border border-gold/30 bg-background/60 px-4 py-2.5 text-sm outline-none focus:border-gold";
 
-function F({ label, children }) {
-    return (
-        <label className="block">
-            <div className="mb-1.5 text-xs uppercase tracking-widest text-muted-foreground">{label}</div>
-            {children}
-        </label>
-    );
-}
-
 // Diamond Shape Options
 const diamondShapes = [
     { name: "Round", value: "round", price: "+0%" },
@@ -127,6 +118,21 @@ export default function Custom() {
 
     const currentShape = diamondShapes.find(s => s.value === form.diamondShape);
 
+    // Handle shape selection - auto next step
+    const handleShapeSelect = (shapeValue) => {
+        setForm({ ...form, diamondShape: shapeValue });
+        setTimeout(() => {
+            setStep(2);
+        }, 300);
+    };
+
+    // Next step handler
+    const handleNext = () => {
+        if (step < 4) {
+            setStep(step + 1);
+        }
+    };
+
     return (
         <div>
             {/* Hero Section */}
@@ -201,7 +207,7 @@ export default function Custom() {
                                 </div>
                             </div>
 
-                            {/* Diamond Details */}
+                            {/* Diamond Details - Shows selected shape */}
                             <div className="mt-6 pt-6 border-t border-gold/20">
                                 <div className="text-gold font-display text-lg">
                                     {currentShape?.name || "Round"} Cut
@@ -231,7 +237,7 @@ export default function Custom() {
                     <div className="rounded-3xl glass-strong p-6 sm:p-8 md:p-10">
                         <form onSubmit={submit}>
                             <AnimatePresence mode="wait">
-                                {/* Step 1: Diamond Shape */}
+                                {/* Step 1: Diamond Shape - Select karva par auto next */}
                                 {step === 1 && (
                                     <motion.div
                                         key="step1"
@@ -246,17 +252,23 @@ export default function Custom() {
                                             <p className="text-sm text-muted-foreground mt-1">
                                                 Choose from 10 iconic diamond shapes
                                             </p>
+                                            <div className="text-xs text-gold/70 mt-2">
+                                                ✨ Click on any shape to continue
+                                            </div>
                                         </div>
                                         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                                             {diamondShapes.map((shape) => (
                                                 <button
                                                     key={shape.value}
                                                     type="button"
-                                                    onClick={() => setForm({ ...form, diamondShape: shape.value })}
+                                                    onClick={() => handleShapeSelect(shape.value)}
                                                     className={`p-3 rounded-xl text-center transition-all ${form.diamondShape === shape.value ? "glass-strong border-gold" : "glass border-transparent hover:border-gold/30"}`}
                                                 >
                                                     <div className="text-sm font-medium">{shape.name}</div>
                                                     <div className="text-xs text-muted-foreground">{shape.price}</div>
+                                                    {form.diamondShape === shape.value && (
+                                                        <div className="text-[10px] text-gold mt-1">✓ Selected</div>
+                                                    )}
                                                 </button>
                                             ))}
                                         </div>
@@ -278,6 +290,9 @@ export default function Custom() {
                                             <p className="text-sm text-muted-foreground mt-1">
                                                 Fine-tune brilliance, size, and purity
                                             </p>
+                                            <div className="text-xs text-gold/70 mt-2">
+                                                ✅ Selected: {diamondShapes.find(s => s.value === form.diamondShape)?.name} Cut
+                                            </div>
                                         </div>
 
                                         <div>
@@ -347,6 +362,9 @@ export default function Custom() {
                                             <p className="text-sm text-muted-foreground mt-1">
                                                 Pick the perfect metal for your ring
                                             </p>
+                                            <div className="text-xs text-gold/70 mt-2">
+                                                ✅ Shape: {diamondShapes.find(s => s.value === form.diamondShape)?.name} Cut
+                                            </div>
                                         </div>
                                         <div className="grid grid-cols-2 gap-3">
                                             {metalOptions.map((metal) => (
@@ -380,6 +398,9 @@ export default function Custom() {
                                             <p className="text-sm text-muted-foreground mt-1">
                                                 Ensure a flawless fit
                                             </p>
+                                            <div className="text-xs text-gold/70 mt-2">
+                                                ✅ Shape: {diamondShapes.find(s => s.value === form.diamondShape)?.name} Cut
+                                            </div>
                                         </div>
 
                                         <div>
@@ -446,22 +467,22 @@ export default function Custom() {
                                         Back
                                     </button>
                                 )}
-                                {step < 4 ? (
+                                {step < 4 && step !== 1 ? (
                                     <button
                                         type="button"
-                                        onClick={() => setStep(step + 1)}
+                                        onClick={handleNext}
                                         className="ml-auto px-6 py-2 rounded-full gold-bg-gradient text-black font-semibold flex items-center gap-2"
                                     >
                                         Continue <ChevronRight className="h-4 w-4" />
                                     </button>
-                                ) : (
+                                ) : step === 4 ? (
                                     <button
                                         type="submit"
                                         className="ml-auto px-6 py-2 rounded-full gold-bg-gradient text-black font-semibold flex items-center gap-2"
                                     >
                                         <Sparkles className="h-4 w-4" /> Start Custom Ring
                                     </button>
-                                )}
+                                ) : null}
                             </div>
                         </form>
 
