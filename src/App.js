@@ -12,7 +12,6 @@ import { Layout } from "./components/ui/Layout";
 import Home from "./routes/Home";
 import About from "./routes/About";
 import Admin from "./routes/admin";
-import BuyGold from "./routes/buy-gold";
 import Cart from "./routes/cart";
 import Checkout from "./routes/checkout";
 import Contact from "./routes/contact";
@@ -21,7 +20,6 @@ import Login from "./routes/login";
 import Product from "./routes/product.$id";
 import Shop from "./routes/shop";
 import Wishlist from "./routes/wishlist";
-import Sell from "./routes/sell";
 import ScrollToTop from "./lib/ScrollToTop";
 
 function App() {
