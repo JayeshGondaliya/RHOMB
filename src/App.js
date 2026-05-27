@@ -21,16 +21,17 @@ import Product from "./routes/product.$id";
 import Shop from "./routes/shop";
 import Wishlist from "./routes/wishlist";
 import ScrollToTop from "./lib/ScrollToTop";
+import { Toaster } from "sonner";
+import BuyGold from "./routes/buy-gold";
 
 function App() {
   return (
     <BrowserRouter>
     <ScrollToTop />
+    <Toaster  position="top-center"  />
       <Routes>
         <Route path="/" element={<Layout />}>
-
           <Route index element={<Home />} />
-
           <Route path="about" element={<About />} />
           <Route path="admin" element={<Admin />} />
           <Route path="cart" element={<Cart />} />
@@ -42,7 +43,7 @@ function App() {
           <Route path="shop" element={<Shop />} />
           <Route path="wishlist" element={<Wishlist />} />
           <Route path="product/:id" element={<Product />} />
-
+          <Route path="buygold" element={<BuyGold />} />
           <Route
             path="*"
             element={

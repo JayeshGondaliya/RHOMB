@@ -6,11 +6,11 @@ import { ThemeToggle } from "./ThemeToggle";
 import { useCart, useWishlist } from "../../lib/store";
 
 const nav = [
-    { to: "/", label: "Home" },
-    { to: "/shop", label: "Shop" },
-    { to: "/custom", label: "Custom" },
-    { to: "/about", label: "About" },
-    { to: "/contact", label: "Contact" },
+    { to: "/", label: "HOME" },
+    { to: "/shop", label: "SHOP" },
+    { to: "/custom", label: "CUSTOM" },
+    { to: "/about", label: "ABOUT" },
+    { to: "/contact", label: "CONTACT" },
 ];
 
 function Badge({ children }) {
