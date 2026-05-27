@@ -17,7 +17,7 @@ export default function Cart() {
     const shipping = total > 0 ? 0 : 0;
     const tax = Math.round(total * 0.03);
 
-    return (
+    return 
         <div className="mx-auto max-w-6xl px-4 py-16">
             <h1 className="font-display text-4xl md:text-5xl">
                 Shopping <span className="gold-gradient">Bag</span>
